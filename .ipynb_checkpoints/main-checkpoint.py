@@ -695,6 +695,7 @@ if uploaded_file is not None:
                 hew_shinj_itg = None
             if umch_helber == "Төрийн":
                 uls_tusuw = sub_tusuw
+                huwi_tusuw = None
             else:
                 if bairshil == "Нийслэл":
                     huwi_tusuw = sub_tusuw * 0.59952
@@ -752,7 +753,15 @@ if uploaded_file is not None:
         #     turul_hut_itg = None
         # if db_bairshil_itg == 1:
         #     db_bairshil_itg = None
-    
+        try:
+            neg_dundaj_ybs = ybs_tusuw/niit_angi_too
+        except:
+            neg_dundaj_ybs = None
+        try:
+            neg_dundaj_sub = sub_tusuw/huuhed_sub
+        except:
+            neg_dundaj_sub = None
+            
         if baiguullaga == "ЕБС":
             data.append({"Аймаг":aimag, 'Байгууллага':baiguullaga ,"Хэв шинж": hew_shinj, "Байршил":bairshil , "Дотуур байр байршил": db_bairshil, "Өмчийн хэлбэр":umch_helber , "Төрөлжсөн хөтөлбөр": turul_hut,
                          "Төвөөс алслагдсан байдал /км/":tuwuus_als, "Сургалтын төлбөр": surgalt_tulbur, "Салбар бүлэг": None, "СӨБ хүүхэд тоо": None, "Х.Б хүүхдийн тоо": None, "Явуулын бүлгийн хүүхэд тоо": None, "Нүүдлийн бүлгийн хүүхэд тоо": None,
@@ -760,15 +769,15 @@ if uploaded_file is not None:
                          "Х.Б 1-р анги": angi_1_hb, "Х.Б 2-р анги": angi_2_hb, "Х.Б 3-р анги": angi_3_hb, "Х.Б 4-р анги": angi_4_hb, "Х.Б 5-р анги": angi_5_hb, "Х.Б 6-р анги": angi_6_hb, "Х.Б 7-р анги": angi_7_hb, "Х.Б 8-р анги": angi_8_hb, "Х.Б 9-р анги": angi_9_hb, "Х.Б 10-р анги": angi_10_hb, "Х.Б 11-р анги": angi_11_hb, "Х.Б 12-р анги": angi_12_hb, "Нийт Х.Б хүүхэд тоо": niit_hb_too,
                          "Д.Б 1-р анги": angi_1_db, "Д.Б 2-р анги": angi_2_db, "Д.Б 3-р анги": angi_3_db, "Д.Б 4-р анги": angi_4_db, "Д.Б 5-р анги": angi_5_db, "Д.Б 6-р анги": angi_6_db, "Д.Б 7-р анги": angi_7_db, "Д.Б 8-р анги": angi_8_db, "Д.Б 9-р анги": angi_9_db, "Д.Б 10-р анги": angi_10_db, "Д.Б 11-р анги": angi_11_db, "Д.Б 12-р анги": angi_12_db, "Нийт Д.Б хүүхэд тоо": niit_db_too, "1-р анги бүлэг": angi_1_buleg, "2-р анги бүлэг": angi_2_buleg, "3-р анги бүлэг": angi_3_buleg, "4-р анги бүлэг": angi_4_buleg, "5-р анги бүлэг": angi_5_buleg, "6-р анги бүлэг": angi_6_buleg, "7-р анги бүлэг": angi_7_buleg, "8-р анги бүлэг": angi_8_buleg, "9-р анги бүлэг": angi_9_buleg, "10-р анги бүлэг": angi_10_buleg, "11-р анги бүлэг": angi_11_buleg, "12-р анги бүлэг": angi_12_buleg,
                          "Байршил итгэлцүүр": bairshil_itg, "Хэв шинж итгэлцүүр": hew_shinj_itg, "Баян-Өлгий аймаг итгэлцүүр": bayn_ulgii, "ЕБС сурагч тоо итгэлцүүр": suragch_too_itg,"СӨБ сурагч тоо итгэлцүүр": None, "Явуулын бүлэг итгэлцүүр": None, "Нүүдлийн бүлэг итгэлцүүр": None, "Сургалтын төлбөр итгэлцүүр": surgalt_tulbur_itg, "Дотуур байр байршил итгэлцүүр": db_bairshil_itg, "Төрөлжсөн хөтөлбөр итгэлцүүр": turul_hut_itg, "Багшийн цалин": bagsh_tsalin, "Багшийн нэмэгдэл": bagsh_nemegdel, "Сургалтын үйл ажиллагаа зардал": hicheel_zardal, "Захиргаа, АА цалин": zahirgaa_aa_tsalin, "Захиргаа, АА нэмэгдэл": zahirgaa_aa_nemegdel, "Захиргаа, АА нөхөх төлбөр": None, "Захиргаа, АА урамшуулал": zahirgaa_aa_uram, "Сургуулийн үйл ажиллагааны урсгал зардал": surguuli_ajillagaa, "Багш хөгжил": bagsh_hugjil, "Эрүүл мэндийн үйлчилгээний зардал": eruul_mend_uilchilgee, "Цахим хэрэглээний зардал": tsahim, "Цэцэрлэг үйл ажиллагаа болон ариутгал зардал": None, "ЕБС Анги ариутгал цэвэрлэгээний зардал": ybs_ariutgal, "Хүүхдийн тоглоом/тоног төхөөрөмж нөхөн хангалт": None,"Танхимаас гадуурх үйл ажиллагаа зардал": tanhimaas_gaduur, "Хүүхэд хамгаалал": huuhed_hamgaalal, "ЕБС Тоног төхөөрөмж нөхөн хангалт": tonog_tuh_nuhult,
-                         "Дотуур байр төсөв": db_tusuw, "Мать хөтөлбөр төсөв": math_hut,"Англи хэл хөтөлбөр төсөв": angli_hut, "Сургууль төсөв": ybs_tusuw, "ЕБС нийт төсөв": niit_tusuw, "СӨБ нийт төсөв": None,"Төрөөс хариуцах": uls_tusuw,"Үүсгэн байгуулагч хариуцах": huwi_tusuw, "Нэг хүүхдийн дундаж хувьсах зардал":ybs_tusuw/niit_angi_too })
+                         "Дотуур байр төсөв": db_tusuw, "Мать хөтөлбөр төсөв": math_hut,"Англи хэл хөтөлбөр төсөв": angli_hut, "Сургууль төсөв": ybs_tusuw, "ЕБС нийт төсөв": niit_tusuw, "СӨБ нийт төсөв": None,"Төрөөс хариуцах": uls_tusuw,"Үүсгэн байгуулагч хариуцах": huwi_tusuw, "Нэг хүүхдийн дундаж хувьсах зардал": neg_dundaj })
         else:
             data.append({"Аймаг":aimag,'Байгууллага':baiguullaga ,"Хэв шинж": hew_shinj, "Байршил":bairshil , "Дотуур байр байршил": None, "Өмчийн хэлбэр":umch_helber , "Төрөлжсөн хөтөлбөр": None,
                          "Төвөөс алслагдсан байдал /км/":tuwuus_als, "Сургалтын төлбөр": surgalt_tulbur, "Салбар бүлэг": buleg, "СӨБ хүүхэд тоо": huuhed_sub, "Х.Б хүүхдийн тоо": huuhed_sub_hb, "Явуулын бүлгийн хүүхэд тоо": y_buleg, "Нүүдлийн бүлгийн хүүхэд тоо": n_buleg,
                          "1-р анги": None, "2-р анги": None, "3-р анги": None, "4-р анги": None, "5-р анги": None, "6-р анги": None, "7-р анги": None, "8-р анги": None, "9-р анги": None, "10-р анги": None, "11-р анги": None, "12-р анги": None,"Нийт сурагч": None, 
                          "Х.Б 1-р анги": None, "Х.Б 2-р анги": None, "Х.Б 3-р анги": None, "Х.Б 4-р анги": None, "Х.Б 5-р анги": None, "Х.Б 6-р анги": None, "Х.Б 7-р анги": None, "Х.Б 8-р анги": None, "Х.Б 9-р анги": None, "Х.Б 10-р анги": None, "Х.Б 11-р анги": None, "Х.Б 12-р анги": None, "Нийт Х.Б хүүхэд тоо": None,
                          "Д.Б 1-р анги": None, "Д.Б 2-р анги": None, "Д.Б 3-р анги": None, "Д.Б 4-р анги": None, "Д.Б 5-р анги": None, "Д.Б 6-р анги": None, "Д.Б 7-р анги": None, "Д.Б 8-р анги": None, "Д.Б 9-р анги": None, "Д.Б 10-р анги": None, "Д.Б 11-р анги": None, "Д.Б 12-р анги": None,"Нийт Д.Б хүүхэд тоо": None, "1-р анги бүлэг": None, "2-р анги бүлэг": None, "3-р анги бүлэг": None, "4-р анги бүлэг": None, "5-р анги бүлэг": None, "6-р анги бүлэг": None, "7-р анги бүлэг": None, "8-р анги бүлэг": None, "9-р анги бүлэг": None, "10-р анги бүлэг": None, "11-р анги бүлэг": None, "12-р анги бүлэг": None,
-                         "Байршил итгэлцүүр": bairshil_itg, "Хэв шинж итгэлцүүр": hew_shinj_itg, "Баян-Өлгий аймаг итгэлцүүр": bayn_ulgii, "ЕБС сурагч тоо итгэлцүүр": None,"СӨБ сурагч тоо итгэлцүүр": sub_too_itg, "Явуулын бүлэг итгэлцүүр": y_buleg_itg, "Нүүдлийн бүлэг итгэлцүүр": n_buleg_itg, "Сургалтын төлбөр итгэлцүүр": None, "Дотуур байр байршил итгэлцүүр": None, "Төрөлжсөн хөтөлбөр итгэлцүүр": None, "Багшийн цалин": bagsh_tsalin, "Багшийн нэмэгдэл": bagsh_nemegdel, "Сургалтын үйл ажиллагаа зардал": hicheel_zardal, "Захиргаа, АА цалин": zahirgaa_aa_tsalin, "Захиргаа, АА нэмэгдэл": zahirgaa_aa_nemegdel, "Захиргаа, АА нөхөх төлбөр": zahirgaa_aa_nuhuh, "Захиргаа, АА урамшуулал": zahirgaa_aa_uram, "Сургуулийн үйл ажиллагааны урсгал зардал": None, "Багш хөгжил": bagsh_hugjil, "Эрүүл мэндийн үйлчилгээний зардал": eruul_mend_uilchilgee, "Цахим хэрэглээний зардал": tsahim, "Цэцэрлэг үйл ажиллагаа болон ариутгал зардал": sub_ursgal_ariutgal, "ЕБС Анги ариутгал цэвэрлэгээний зардал": None, "Хүүхдийн тоглоом/тоног төхөөрөмж нөхөн хангалт": huuhdiin_togloom,"Танхимаас гадуурх үйл ажиллагаа зардал": None, "Хүүхэд хамгаалал": huuhed_hamgaalal, "ЕБС Тоног төхөөрөмж нөхөн хангалт": None,
-                         "Дотуур байр төсөв": None, "Мать хөтөлбөр төсөв": None,"Англи хэл хөтөлбөр төсөв": None, "Сургууль төсөв": None, "ЕБС нийт төсөв": None, "СӨБ нийт төсөв": sub_tusuw,"Төрөөс хариуцах": uls_tusuw,"Үүсгэн байгуулагч хариуцах": huwi_tusuw, "Нэг хүүхдийн дундаж хувьсах зардал":sub_tusuw/huuhed_sub})
+                         "Байршил итгэлцүүр": bairshil_itg, "Хэв шинж итгэлцүүр": hew_shinj_itg, "Баян-Өлгий аймаг итгэлцүүр": None, "ЕБС сурагч тоо итгэлцүүр": None,"СӨБ сурагч тоо итгэлцүүр": sub_too_itg, "Явуулын бүлэг итгэлцүүр": y_buleg_itg, "Нүүдлийн бүлэг итгэлцүүр": n_buleg_itg, "Сургалтын төлбөр итгэлцүүр": None, "Дотуур байр байршил итгэлцүүр": None, "Төрөлжсөн хөтөлбөр итгэлцүүр": None, "Багшийн цалин": bagsh_tsalin, "Багшийн нэмэгдэл": bagsh_nemegdel, "Сургалтын үйл ажиллагаа зардал": hicheel_zardal, "Захиргаа, АА цалин": zahirgaa_aa_tsalin, "Захиргаа, АА нэмэгдэл": zahirgaa_aa_nemegdel, "Захиргаа, АА нөхөх төлбөр": zahirgaa_aa_nuhuh, "Захиргаа, АА урамшуулал": zahirgaa_aa_uram, "Сургуулийн үйл ажиллагааны урсгал зардал": None, "Багш хөгжил": bagsh_hugjil, "Эрүүл мэндийн үйлчилгээний зардал": eruul_mend_uilchilgee, "Цахим хэрэглээний зардал": tsahim, "Цэцэрлэг үйл ажиллагаа болон ариутгал зардал": sub_ursgal_ariutgal, "ЕБС Анги ариутгал цэвэрлэгээний зардал": None, "Хүүхдийн тоглоом/тоног төхөөрөмж нөхөн хангалт": huuhdiin_togloom,"Танхимаас гадуурх үйл ажиллагаа зардал": None, "Хүүхэд хамгаалал": huuhed_hamgaalal, "ЕБС Тоног төхөөрөмж нөхөн хангалт": None,
+                         "Дотуур байр төсөв": None, "Мать хөтөлбөр төсөв": None,"Англи хэл хөтөлбөр төсөв": None, "Сургууль төсөв": None, "ЕБС нийт төсөв": None, "СӨБ нийт төсөв": sub_tusuw,"Төрөөс хариуцах": uls_tusuw,"Үүсгэн байгуулагч хариуцах": huwi_tusuw, "Нэг хүүхдийн дундаж хувьсах зардал":neg_dundaj_sub})
             
     df = pd.DataFrame(data)
     original_df = df.copy()
@@ -783,9 +792,15 @@ if uploaded_file is not None:
     )
     st.write(original_df)
     st.write(f":blue[ЕБС бүх төсөв: {round(original_df['ЕБС нийт төсөв'].sum(), 3)}]")
-    st.write(f":blue[ЕБС дундаж хувьсах зардал: {round(original_df['ЕБС нийт төсөв'].sum()/original_df['Нийт сурагч'].sum(), 3)}]")
+    try:
+        st.write(f":blue[ЕБС дундаж хувьсах зардал: {round(original_df['ЕБС нийт төсөв'].sum()/original_df['Нийт сурагч'].sum(), 3)}]")
+    except:
+        pass
     st.write(f":blue[СӨБ бүх төсөв: {round(original_df['СӨБ нийт төсөв'].sum(), 3)}]")
-    st.write(f":blue[СӨБ дундаж хувьсах зардал: {round(original_df['СӨБ нийт төсөв'].sum()/original_df['СӨБ хүүхэд тоо'].sum(), 3)}]")
+    try:
+        st.write(f":blue[СӨБ дундаж хувьсах зардал: {round(original_df['СӨБ нийт төсөв'].sum()/original_df['СӨБ хүүхэд тоо'].sum(), 3)}]")
+    except:
+        pass
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
